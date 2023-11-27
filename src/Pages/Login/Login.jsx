@@ -68,13 +68,13 @@ const Login = () => {
               </h1>
               <label className="label ">
                 <span className="label-text font-bold text-white">
-                  Full Name
+                  Email
                 </span>
               </label>
               <input
                 type="email"
                 name="email"
-                placeholder="Enter name"
+                placeholder="Enter email"
                 className="input bg-white py-4 rounded-2xl"
                 required
               />
@@ -88,7 +88,7 @@ const Login = () => {
               <input
                 type="Password"
                 name="password"
-                placeholder="Enter email"
+                placeholder="Enter password"
                 className="input bg-white rounded-2xl"
                 required
               />

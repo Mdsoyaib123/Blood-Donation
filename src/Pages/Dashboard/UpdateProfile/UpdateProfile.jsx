@@ -135,6 +135,7 @@ const UpdateProfile = () => {
               >
                 <option value={"please select"}>please select</option>
                 {upazilas?.map((item) => (
+                  
                   <option key={item.id} value={item.name}>
                     {item.name}
                   </option>

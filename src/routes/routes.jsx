@@ -24,6 +24,7 @@ import AdminRoutes from './AdminRoutes';
 import VolunteerRoutes from './VolunteerRoutes';
 
 import UpdateProfile from '../Pages/Dashboard/UpdateProfile/updateProfile';
+import DonationRequestDetails from '../Pages/DonationRequestDetails/DonationRequestDetails';
 
 const routes = createBrowserRouter([
     {
@@ -41,8 +42,15 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'donationRequests',
-                element: <DonationRequests></DonationRequests>
-            },{
+                element: <DonationRequests></DonationRequests>,
+                loader:()=>fetch('http://localhost:5000/donation')
+            },
+            {
+                path: 'donationRequestsDetails/:id',
+                element:<PrivateRoute><DonationRequestDetails></DonationRequestDetails></PrivateRoute>,
+                loader: ({params})=>fetch(`http://localhost:5000/donation/${params.id}`)
+            },
+            {
                 path:'/login',
                 element: <Login></Login>
             },
@@ -66,7 +74,8 @@ const routes = createBrowserRouter([
             
             {
                 path: 'userDashboard',
-                element: <UserDashboard></UserDashboard>
+                element: <UserDashboard></UserDashboard>,
+                
             },
             {
                 path:'myDonationRequests',
@@ -74,7 +83,8 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'createDonationRequest',
-                element: <CreateDonationRequest></CreateDonationRequest>
+                element: <CreateDonationRequest></CreateDonationRequest>,
+                
             },
 
 
