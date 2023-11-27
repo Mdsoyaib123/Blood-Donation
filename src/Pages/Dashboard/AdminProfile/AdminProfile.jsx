@@ -20,9 +20,9 @@ const AdminProfile = () => {
     <div className="bg-base-200 mx-10 px-10 py-20 mt-20">
       <div className="flex justify-between ">
         <h1 className="text-3xl font-bold mb-10">My Profile</h1>
-        {/* <Link to={`/dashBoard/adminUpdateProfile/${profile._id}`} className="text-[#e61710] text-xl underline">
+        <Link to={`/dashBoard/adminUpdateProfile/${profile._id}`} className="text-[#e61710] text-xl underline">
           Edit
-        </Link> */}
+        </Link>
       </div>
       <div className="flex gap-12  ">
         <div className="">

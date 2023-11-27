@@ -16,13 +16,14 @@ import AdminDashboard from '../Pages/Dashboard/AdminDashboard/AdminDashboard';
 import AllUsers from '../Pages/Dashboard/AllUsers/AllUsers';
 import AllBloodDonation from './../Pages/Dashboard/AllBloodDonation/AllBloodDonation';
 import ContentManagement from '../Pages/Dashboard/ContentManagement/ContentManagement';
-import VolunteerDashboard from '../Pages/Dashboard/VolunteerDashboard/VolunteerDashboard';
+
 import UserDashboard from '../Pages/Dashboard/UserDashboard/UserDashboard';
 import MyDonationRequests from '../Pages/Dashboard/MyDonationRequests/MyDonationRequests';
 import CreateDonationRequest from '../Pages/Dashboard/CreateDonationRequest/CreateDonationRequest';
 import AdminRoutes from './AdminRoutes';
 import VolunteerRoutes from './VolunteerRoutes';
-import AdminUpdateProfile from '../Pages/Dashboard/AdminUpdateProfile/AdminUpdateProfile';
+
+import UpdateProfile from '../Pages/Dashboard/UpdateProfile/updateProfile';
 
 const routes = createBrowserRouter([
     {
@@ -62,11 +63,7 @@ const routes = createBrowserRouter([
                 path: 'userProfile',
                 element: <UserProfile></UserProfile>
             },
-            {
-                path:'adminUpdateProfile/:id',
-                element: <AdminUpdateProfile></AdminUpdateProfile>,
-                // loader: ({params})=>fetch(`http://localhost:5000/update/${params.id}`)
-            },
+            
             {
                 path: 'userDashboard',
                 element: <UserDashboard></UserDashboard>
@@ -87,6 +84,11 @@ const routes = createBrowserRouter([
             {
                 path: 'adminProfile',
                 element: <AdminRoutes><AdminProfile></AdminProfile></AdminRoutes>
+            },
+            {
+                path:'adminUpdateProfile/:id',
+                element: <UpdateProfile></UpdateProfile>
+                
             },
             {
                 path: 'adminDashboard',
@@ -113,7 +115,7 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'volunteerDashboard',
-                element: <VolunteerRoutes><VolunteerDashboard></VolunteerDashboard></VolunteerRoutes>
+                element: <VolunteerRoutes><AdminDashboard></AdminDashboard></VolunteerRoutes>
             },
             {
                 path:'volunteer/allBloodDonation',

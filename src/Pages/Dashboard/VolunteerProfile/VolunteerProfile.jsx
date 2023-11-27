@@ -16,12 +16,12 @@ const VolunteerProfile = () => {
       return res.data;
     },
   });
-  console.log(profile);
+  // console.log(profile);
     return (
         <div className="bg-base-200 mx-10 px-10 py-20 mt-20">
       <div className="flex justify-between ">
         <h1 className="text-3xl font-bold mb-10">My Profile</h1>
-        <Link to={""} className="text-[#e61710] text-xl underline">
+        <Link to={`/dashBoard/adminUpdateProfile/${profile._id}`} className="text-[#e61710] text-xl underline">
           Edit
         </Link>
       </div>
@@ -32,9 +32,11 @@ const VolunteerProfile = () => {
             src={profile?.Avatar}
             alt=""
           />
+          <Link  to={`/dashBoard/adminUpdateProfile/${profile._id}`}>
           <button className="btn-sm rounded-md mt-10 text-white bg-[#e61710] w-full">
             Edit Profile
           </button>
+          </Link>
         </div>
         <div className="  flex gap-10">
           <div className="space-y-4">
