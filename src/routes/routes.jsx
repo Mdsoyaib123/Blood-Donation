@@ -25,6 +25,9 @@ import VolunteerRoutes from './VolunteerRoutes';
 
 import UpdateProfile from '../Pages/Dashboard/UpdateProfile/updateProfile';
 import DonationRequestDetails from '../Pages/DonationRequestDetails/DonationRequestDetails';
+import UpdateDonation from '../Pages/updateDonation/updateDonation';
+import CreateBlog from '../Pages/Dashboard/CreateBlog/CreateBlog';
+import FundDonate from '../Pages/FundDonate/FundDonate';
 
 const routes = createBrowserRouter([
     {
@@ -38,7 +41,13 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'blog',
-                element: <Blog></Blog>
+                element: <Blog></Blog>,
+                loader: ()=>fetch('http://localhost:5000/allBlogs')
+            },
+            {
+                path: 'fundDonate',
+                element: <PrivateRoute><FundDonate></FundDonate></PrivateRoute>
+
             },
             {
                 path: 'donationRequests',
@@ -82,6 +91,11 @@ const routes = createBrowserRouter([
                 element: <MyDonationRequests></MyDonationRequests>
             },
             {
+                path: 'updateDonation/:id',
+                element: <UpdateDonation></UpdateDonation>,
+                loader:({params})=>fetch(`http://localhost:5000/donation/${params.id}`)
+            },
+            {
                 path: 'createDonationRequest',
                 element: <CreateDonationRequest></CreateDonationRequest>,
                 
@@ -97,7 +111,7 @@ const routes = createBrowserRouter([
             },
             {
                 path:'adminUpdateProfile/:id',
-                element: <UpdateProfile></UpdateProfile>
+                element: <AdminRoutes><UpdateProfile></UpdateProfile></AdminRoutes>
                 
             },
             {
@@ -111,6 +125,10 @@ const routes = createBrowserRouter([
             {
                 path: 'admin/allBloodDonation',
                 element: <AdminRoutes><AllBloodDonation></AllBloodDonation></AdminRoutes>
+            },
+            {
+                path:'content-management/add-blog',
+                element: <CreateBlog></CreateBlog>
             },
             {
                 path: 'admin/contentManagement',

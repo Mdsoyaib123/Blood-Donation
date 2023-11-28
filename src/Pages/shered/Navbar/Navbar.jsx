@@ -17,7 +17,7 @@ const Navbar = () => {
       });
   };
   const links = (
-    <div className="grid grid-cols-1 lg:flex  gap-12 font-semibold text-lg items-center">
+    <div className="grid grid-cols-1 lg:flex  gap-8 font-semibold text-lg items-center">
       <NavLink
         to={"/"}
         className={({ isActive }) =>
@@ -48,6 +48,16 @@ const Navbar = () => {
       >
         <button>Blog</button>
       </NavLink>
+      <NavLink
+        to={"/fundDonate"}
+        className={({ isActive }) =>
+          isActive
+            ? "text-[#e61710] font-bold text-xl border-b-2 border-red-500 "
+            : ""
+        }
+      >
+        <button> Fund Donate </button>
+      </NavLink>
       {user && isAdmin && (
         <li>
           <Link to={"/dashboard/adminDashboard"}> DashBoard</Link>
@@ -58,7 +68,7 @@ const Navbar = () => {
           <Link to={"/dashboard/volunteerDashboard"}> DashBoard</Link>
         </li>
       )}
-      {user && !isAdmin && !isVolunteer  && (
+      {user && !isAdmin && !isVolunteer && (
         <li>
           <Link to={"/dashboard/userDashboard"}> DashBoard</Link>
         </li>

@@ -4,6 +4,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 
 const DonationRequests = () => {
   const donationData = useLoaderData();
+  // console.log(donationData);
   const pendingStatus = donationData.filter(
     (item) => item.status === "pending"
   );

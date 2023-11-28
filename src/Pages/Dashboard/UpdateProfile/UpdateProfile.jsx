@@ -165,7 +165,7 @@ const UpdateProfile = () => {
           <input
             className="btn bg-red-500 text-white rounded-lg"
             type="submit"
-            value="Register"
+            value="Update"
           />
         </div>
       </form>

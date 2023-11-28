@@ -8,6 +8,7 @@ const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const [showMenu, setShowMenu] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
+  // console.log(showMenu);
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
@@ -19,6 +20,7 @@ const AllUsers = () => {
 
   const handleMenu = (id) => {
     setShowMenu(!showMenu);
+    console.log(showMenu);
     if (!showMenu) {
       setOpenMenu(id);
     } else {
