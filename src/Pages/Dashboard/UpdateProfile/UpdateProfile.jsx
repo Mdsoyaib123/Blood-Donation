@@ -24,7 +24,7 @@ const UpdateProfile = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`http://localhost:5000/UpdateProfile/${id}`)
+    axios.get(`https://blood-donation-server-one.vercel.app/UpdateProfile/${id}`)
     .then((res) => {
       setUpdatebleData(res.data)
 
@@ -163,7 +163,7 @@ const UpdateProfile = () => {
         <div className="form-control mt-6">
           <p className="text-red-500 py-2"></p>
           <input
-            className="btn bg-red-500 text-white rounded-lg"
+            className="btn bg-[#e61710] text-white rounded-lg"
             type="submit"
             value="Update"
           />

@@ -12,7 +12,7 @@ const FundDonate = () => {
   const { data: loader = [], refetch } = useQuery({
     queryKey: ["fund"],
     queryFn: async () => {
-      const res = await axiosPublic.get("http://localhost:5000/payments");
+      const res = await axiosPublic.get("https://blood-donation-server-one.vercel.app/payments");
       return res.data;
     },
   });
