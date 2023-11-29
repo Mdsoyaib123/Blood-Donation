@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { AuthContext } from "../../../Provider/AuthProvider/AuthProvider";
 import useAddressData from "../../../Hooks/useAddressData";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const CreateDonationRequest = () => {
   const { user } = useContext(AuthContext);
@@ -46,6 +47,9 @@ const CreateDonationRequest = () => {
     
     const res = await axiosPublic.post("/donation", donationData);
     console.log(res.data);
+    if(res.data.insertedId ){
+      toast.success('Create donation request successfully')
+    }
   };
 
   return (

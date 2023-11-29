@@ -4,20 +4,34 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import useVolunteer from "../../../Hooks/useVolunteer";
 
 const AllBloodDonation = () => {
-    const [isVolunteer] = useVolunteer()
+  const [isVolunteer] = useVolunteer();
   const { user } = useContext(AuthContext);
   const axiosPublic = useAxiosPublic();
   const [showMenu, setShowMenu] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
+
+  const { totalDonation } = useLoaderData();
+
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemPerPage, setItemPerPage] = useState(10);
+  const numberOfPages = Math.ceil(totalDonation / itemPerPage);
+
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
+
   const { data: allDonationRequest = [], refetch } = useQuery({
-    queryKey: ["allDonationRequest"],
+    queryKey: ["allDonationRequest",currentPage,itemPerPage],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/allDonationRequest`);
+      const res = await axiosPublic.get(
+        `/allDonationRequest?page=${currentPage}&&size=${itemPerPage}`
+      );
       //   setUserDonation(res.data);
       return res.data;
     },
@@ -69,6 +83,27 @@ const AllBloodDonation = () => {
       }
     });
   };
+
+  // pagination related
+  const handelItemPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    setItemPerPage(val);
+    setCurrentPage(0);
+  };
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNext = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handleBtn = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="max-w-[2520px] mx-auto">
       {/* todo: welcome section */}
@@ -91,7 +126,7 @@ const AllBloodDonation = () => {
                 <th>Time</th>
                 <th className="text-center">Donation Status</th>
                 {/* <th className="">Donor Info</th> */}
-                {isVolunteer && user ? '' :  <th>Action</th>}
+                {isVolunteer && user ? "" : <th>Action</th>}
               </tr>
             </thead>
             <tbody>
@@ -129,38 +164,75 @@ const AllBloodDonation = () => {
                         <h3> {data?.donarEmail ? data?.donarEmail : ""}</h3>
                       </div>
                     </td> */}
-                 {isVolunteer && user ? '' : <td
-                    onClick={() => handleMenu(data._id)}
-                    className="cursor-pointer relative  text-xl"
-                  >
-                    <button className="">
-                      <GiHamburgerMenu></GiHamburgerMenu>
-                    </button>
-                    {openMenu === data._id && showMenu && (
-                      <div className="dropdown-content flex flex-col gap-2 bg-base-300 px-5 py-2 display rounded-lg absolute right-20 top-2 ">
-                        <Link to={`/dashBoard/updateDonation/${data._id}`}>
-                          <button className="btn btn-outline bg-[#e61710] px-8 text-white">
-                            Edit
+                  {isVolunteer && user ? (
+                    ""
+                  ) : (
+                    <td
+                      onClick={() => handleMenu(data._id)}
+                      className="cursor-pointer relative  text-xl"
+                    >
+                      <button className="">
+                        <GiHamburgerMenu></GiHamburgerMenu>
+                      </button>
+                      {openMenu === data._id && showMenu && (
+                        <div className="dropdown-content flex flex-col gap-2 bg-base-300 px-5 py-2 display rounded-lg absolute right-20 top-2 ">
+                          <Link to={`/dashBoard/updateDonation/${data._id}`}>
+                            <button className="btn btn-outline bg-[#e61710] px-8 text-white">
+                              Edit
+                            </button>
+                          </Link>
+                          <button
+                            onClick={() => handleDelete(data._id)}
+                            className="btn btn-outline bg-[#7D7463] text-white"
+                          >
+                            Delete
                           </button>
-                        </Link>
-                        <button
-                          onClick={() => handleDelete(data._id)}
-                          className="btn btn-outline bg-[#7D7463] text-white"
-                        >
-                          Delete
-                        </button>
-                        <Link to={`/donationRequestsDetails/${data._id}`}>
-                          <button className="btn btn-outline bg-[#e61710] px-8 text-white">
-                            View
-                          </button>
-                        </Link>
-                      </div>
-                    )}
-                  </td>}
+                          <Link to={`/donationRequestsDetails/${data._id}`}>
+                            <button className="btn btn-outline bg-[#e61710] px-8 text-white">
+                              View
+                            </button>
+                          </Link>
+                        </div>
+                      )}
+                    </td>
+                  )}
                 </tr>
               ))}
             </tbody>
           </table>
+          <div className="pagination justify-center flex gap-4 mt-10">
+            <button className="btn btn-active btn-neutral" onClick={handlePrev}>
+              prev
+            </button>
+            <div className=" flex gap-2">
+              {pages.map((page) => (
+                <button
+                  className={
+                    currentPage === page ? "selected btn-outline  btn" : "btn"
+                  }
+                  // onClick={() => setCurrentPage(page)}
+                  onClick={() => handleBtn(page)}
+                  key={page}
+                >
+                  {page}
+                </button>
+              ))}
+            </div>
+            <button className="btn btn-active btn-neutral" onClick={handleNext}>
+              next
+            </button>
+
+            <select
+              value={itemPerPage}
+              onChange={handelItemPerPage}
+              name=""
+              id=""
+            >
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>

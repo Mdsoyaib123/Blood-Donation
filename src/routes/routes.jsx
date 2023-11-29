@@ -46,7 +46,8 @@ const routes = createBrowserRouter([
             },
             {
                 path: 'fundDonate',
-                element: <PrivateRoute><FundDonate></FundDonate></PrivateRoute>
+                element: <PrivateRoute><FundDonate></FundDonate></PrivateRoute>,
+                
 
             },
             {
@@ -88,7 +89,8 @@ const routes = createBrowserRouter([
             },
             {
                 path:'myDonationRequests',
-                element: <MyDonationRequests></MyDonationRequests>
+                element: <MyDonationRequests></MyDonationRequests>,
+                
             },
             {
                 path: 'updateDonation/:id',
@@ -120,11 +122,14 @@ const routes = createBrowserRouter([
             },
             {
                 path:'allUsers',
-                element:<AdminRoutes><AllUsers></AllUsers></AdminRoutes>
+                element:<AdminRoutes><AllUsers></AllUsers></AdminRoutes>,
+                loader: ()=>fetch('http://localhost:5000/dashboard/statist')
             },
             {
                 path: 'admin/allBloodDonation',
-                element: <AdminRoutes><AllBloodDonation></AllBloodDonation></AdminRoutes>
+                element: <AdminRoutes><AllBloodDonation></AllBloodDonation></AdminRoutes>,
+                loader: ()=>fetch('http://localhost:5000/dashboard/statist')
+            
             },
             {
                 path:'content-management/add-blog',
@@ -147,7 +152,8 @@ const routes = createBrowserRouter([
             },
             {
                 path:'volunteer/allBloodDonation',
-                element: <VolunteerRoutes><AllBloodDonation></AllBloodDonation></VolunteerRoutes>
+                element: <VolunteerRoutes><AllBloodDonation></AllBloodDonation></VolunteerRoutes>,
+                loader: ()=>fetch('http://localhost:5000/dashboard/statist')
             },
             {
                 path: 'volunteer/contentManagement',

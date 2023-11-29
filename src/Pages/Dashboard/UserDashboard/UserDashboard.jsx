@@ -24,8 +24,9 @@ const UserDashboard = () => {
   const { data: userDonationData = [], refetch } = useQuery({
     queryKey: ["userDonationRequest"],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/userDonationRequest/${user?.email}`);
+      const res = await axiosPublic.get(`/userDonationRequestDashboard/${user?.email}`);
       setUserDonation(res.data);
+      console.log(res.data);
       return res.data;
     },
   });
@@ -81,7 +82,7 @@ const UserDashboard = () => {
       {/* todo: welcome section */}
       <div>
         <h1 className="text-3xl font-bold ">
-          Hi ! Welcome {user?.displayName}
+          Hi  {user?.displayName} ! Welcome to your Dashboard
         </h1>
       </div>
       {/* table */}

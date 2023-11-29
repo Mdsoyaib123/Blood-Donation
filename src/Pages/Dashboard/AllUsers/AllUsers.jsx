@@ -3,17 +3,30 @@ import useAxiosSecure from "./../../../Hooks/useAxiosSecure";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useLoaderData } from "react-router-dom";
+import { useEffect } from "react";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
   const [showMenu, setShowMenu] = useState(false);
   const [openMenu, setOpenMenu] = useState(null);
-  // console.log(showMenu);
+
+  const { totalUser } = useLoaderData();
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemPerPage, setItemPerPage] = useState(5);
+  const numberOfPages = Math.ceil(totalUser / itemPerPage);
+
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
+
   const { data: users = [], refetch } = useQuery({
-    queryKey: ["users"],
+    queryKey: ["users",currentPage,itemPerPage],
     queryFn: async () => {
-      const res = await axiosSecure.get("/users");
-      
+      const res = await axiosSecure.get(
+        `/users?page=${currentPage}&&size=${itemPerPage}`
+      );
       return res.data;
     },
   });
@@ -70,6 +83,27 @@ const AllUsers = () => {
     // const filtered = users.filter(item=>item.status.includes(e.target.value))
     // setUsers(filtered)
   };
+
+  const handelItemPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    setItemPerPage(val);
+    setCurrentPage(0);
+  };
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNext = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handleBtn = (page) => {
+    setCurrentPage(page);
+    
+  };
+
   return (
     <div>
       <h1 className="text-center text-3xl font-bold mb-12 ">All Users </h1>
@@ -159,6 +193,45 @@ const AllUsers = () => {
                 ))}
               </tbody>
             </table>
+
+            <div className="pagination justify-center flex gap-8 mt-10">
+              <button
+                className="btn btn-active btn-neutral"
+                onClick={handlePrev}
+              >
+                prev
+              </button>
+              {pages.map((page) => (
+                <button
+                  className={
+                    currentPage === page ? "selected btn-outline  btn" : "btn"
+                  }
+                  // onClick={() => setCurrentPage(page)}
+                  onClick={() => handleBtn(page)}
+                  key={page}
+                >
+                  {page}
+                </button>
+              ))}
+              <button
+                className="btn btn-active btn-neutral"
+                onClick={handleNext}
+              >
+                next
+              </button>
+
+              <select
+                value={itemPerPage}
+                onChange={handelItemPerPage}
+                name=""
+                id=""
+              >
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+              </select>
+            </div>
           </div>
         </div>
       </div>

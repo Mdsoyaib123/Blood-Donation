@@ -5,7 +5,7 @@ import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { GiHamburgerMenu } from "react-icons/gi";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
-import { Link, Navigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useLoaderData, useLocation } from "react-router-dom";
 
 const MyDonationRequests = () => {
   const { user } = useContext(AuthContext);
@@ -14,12 +14,26 @@ const MyDonationRequests = () => {
   const [openMenu, setOpenMenu] = useState(null);
   // const [userDonation, setUserDonation] = useState([]);
   // console.log(userDonation);
+
+  const [donationLength,setDonationLength] = useState('')
+  const [currentPage, setCurrentPage] = useState(0);
+  const [itemPerPage, setItemPerPage] = useState(10);
+  const numberOfPages = Math.ceil(donationLength / itemPerPage);
+  
+  const pages = [];
+  for (let i = 0; i < numberOfPages; i++) {
+    pages.push(i);
+  }
+
   const { data: userDonationData = [], refetch } = useQuery({
-    queryKey: ["myDonationRequest"],
+    queryKey: ["myDonationRequest", currentPage, itemPerPage],
     queryFn: async () => {
-      const res = await axiosPublic.get(`/userDonationRequest/${user?.email}`);
-      //   setUserDonation(res.data);
-      return res.data;
+      const res = await axiosPublic.get(
+        `/userDonationRequest/${user?.email}?page=${currentPage}&&size=${itemPerPage}`
+      );
+      setDonationLength(res.data.length.length)
+     
+      return res.data.result;
     },
   });
   const handleMenu = (id) => {
@@ -69,7 +83,26 @@ const MyDonationRequests = () => {
     });
   };
 
- 
+  // pagination related
+  const handelItemPerPage = (e) => {
+    const val = parseInt(e.target.value);
+    setItemPerPage(val);
+    setCurrentPage(0);
+  };
+  const handlePrev = () => {
+    if (currentPage > 0) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  const handleNext = () => {
+    if (currentPage < pages.length - 1) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+  const handleBtn = (page) => {
+    setCurrentPage(page);
+  };
+
   return (
     <div className="max-w-[2520px] mx-auto">
       {/* todo: welcome section */}
@@ -142,7 +175,7 @@ const MyDonationRequests = () => {
                         <Link to={`/dashBoard/updateDonation/${data._id}`}>
                           <button className="btn btn-outline bg-[#e61710] px-8 text-white">
                             Edit
-                          </button> 
+                          </button>
                         </Link>
                         <button
                           onClick={() => handleDelete(data._id)}
@@ -151,9 +184,9 @@ const MyDonationRequests = () => {
                           Delete
                         </button>
                         <Link to={`/donationRequestsDetails/${data._id}`}>
-                        <button className="btn btn-outline bg-[#e61710] px-8 text-white">
-                          View
-                        </button>
+                          <button className="btn btn-outline bg-[#e61710] px-8 text-white">
+                            View
+                          </button>
                         </Link>
                       </div>
                     )}
@@ -162,6 +195,39 @@ const MyDonationRequests = () => {
               ))}
             </tbody>
           </table>
+          <p>current page : {currentPage}</p>
+          <div className="pagination justify-center flex gap-8 mt-10">
+            <button className="btn btn-active btn-neutral" onClick={handlePrev}>
+              prev
+            </button>
+            {pages.map((page) => (
+              <button
+                className={
+                  currentPage === page ? "selected btn-outline  btn" : "btn"
+                }
+                // onClick={() => setCurrentPage(page)}
+                onClick={() => handleBtn(page)}
+                key={page}
+              >
+                {page}
+              </button>
+            ))}
+            <button className="btn btn-active btn-neutral" onClick={handleNext}>
+              next
+            </button>
+            <select
+              value={itemPerPage}
+              onChange={handelItemPerPage}
+              className="border px-4 py-2"
+              name=""
+              id=""
+            >
+              <option value="5">5</option>
+              <option value="10">10</option>
+              <option value="20">20</option>
+              <option value="50">50</option>
+            </select>
+          </div>
         </div>
       </div>
     </div>
