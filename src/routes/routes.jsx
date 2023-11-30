@@ -27,6 +27,7 @@ import DonationRequestDetails from "../Pages/DonationRequestDetails/DonationRequ
 import UpdateDonation from "../Pages/updateDonation/updateDonation";
 import CreateBlog from "../Pages/Dashboard/CreateBlog/CreateBlog";
 import FundDonate from "../Pages/FundDonate/FundDonate";
+import SearchDonors from "../Pages/SearchDonors/SearchDonors";
 
 const routes = createBrowserRouter([
   {
@@ -42,7 +43,7 @@ const routes = createBrowserRouter([
         path: "blog",
         element: <Blog></Blog>,
         loader: () =>
-          fetch("https://blood-donation-server-one.vercel.app/allBlogs"),
+          fetch("http://localhost:5000/allBlogs"),
       },
       {
         path: "fundDonate",
@@ -56,7 +57,7 @@ const routes = createBrowserRouter([
         path: "donationRequests",
         element: <DonationRequests></DonationRequests>,
         loader: () =>
-          fetch("https://blood-donation-server-one.vercel.app/donation"),
+          fetch("http://localhost:5000/donation"),
       },
       {
         path: "donationRequestsDetails/:id",
@@ -67,8 +68,12 @@ const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `https://blood-donation-server-one.vercel.app/donation/${params.id}`
+            `http://localhost:5000/donation/${params.id}`
           ),
+      },
+      {
+        path: '/searchDonors',
+        element: <SearchDonors></SearchDonors>
       },
       {
         path: "/login",
@@ -107,7 +112,7 @@ const routes = createBrowserRouter([
         element: <UpdateDonation></UpdateDonation>,
         loader: ({ params }) =>
           fetch(
-            `https://blood-donation-server-one.vercel.app/donation/${params.id}`
+            `http://localhost:5000/donation/${params.id}`
           ),
       },
       {
@@ -145,7 +150,7 @@ const routes = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "https://blood-donation-server-one.vercel.app/dashboard/statist"
+            "http://localhost:5000/dashboard/statist"
           ),
       },
       {
@@ -157,7 +162,7 @@ const routes = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "https://blood-donation-server-one.vercel.app/dashboard/statist"
+            "http://localhost:5000/dashboard/statist"
           ),
       },
       {
@@ -199,7 +204,7 @@ const routes = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "https://blood-donation-server-one.vercel.app/dashboard/statist"
+            "http://localhost:5000/dashboard/statist"
           ),
       },
       {

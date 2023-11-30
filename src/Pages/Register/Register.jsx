@@ -81,9 +81,9 @@ const Register = () => {
           onSubmit={handleSubmit(onSubmit)}
           className="card-body bg-white px-10   "
         >
-          {/* <h1 className="text-4xl font-bold mb-10 text-center">
+          <h1 className="text-4xl font-bold mb-7 text-center">
             Register As a Donor
-          </h1> */}
+          </h1>
           <div className="form-control">
             <div className="lg:flex w-full justify-between gap-5">
               <div className="form-control w-1/2">

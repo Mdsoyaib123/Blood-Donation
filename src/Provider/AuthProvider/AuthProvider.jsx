@@ -40,7 +40,7 @@ const AuthProvider = ({children}) => {
             setLoading(false)
             if(currentUser){
                 const loggedUser = {email:currentUser.email}
-                axios.post('https://blood-donation-server-one.vercel.app/jwt',loggedUser,{withCredentials:true})
+                axios.post('http://localhost:5000/jwt',loggedUser,{withCredentials:true})
                 .then(res=>{
                     console.log('token response',res.data);
                 })

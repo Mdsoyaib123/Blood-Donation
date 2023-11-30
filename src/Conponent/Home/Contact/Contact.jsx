@@ -3,16 +3,19 @@ import { IoHomeOutline } from "react-icons/io5";
 import { FiPhone } from "react-icons/fi";
 import { MdOutlineMail } from "react-icons/md";
 import { GiWorld } from "react-icons/gi";
+import TitleBanner from "./../../../Pages/shered/TitleBanner/TitleBanner";
 
 const Contact = () => {
   return (
     <>
+      <TitleBanner></TitleBanner>
       <Container>
-      <h1 className="text-5xl font-bold text-center  ">Contact us</h1>
-      <div className="border-b-4 mt-3 my-5"></div>
-        <div className="flex items-center">
-          <div className="flex-1">
-           <h1 className="text-4xl py-10"> Here  some method to <br></br>contact with us</h1>
+        <div className="lg:flex mt-5">
+          <div className="flex-1 ">
+            <h1 className="text-4xl py-10 font-semibold">
+              {" "}
+              Here some method to <br></br>contact with us
+            </h1>
             <div className="space-y-6 mt-3">
               <div className="text-lg  flex items-center gap-2  px-2 py-1">
                 <IoHomeOutline className="bg-[#e61710] text-white px-2 py-1 text-4xl rounded-sm"></IoHomeOutline>
@@ -42,12 +45,10 @@ const Contact = () => {
             </div>
           </div>
 
-
           <div className="bg-base-200 rounded-md mt-0 flex-1 mb-10 pb-5">
-         
             {/* form */}
             <div className=" space-y-6 px-6 py-6 ">
-              <h2 className="text-2xl mb-3  font-bold">Say hello to us</h2>
+              <h2 className="text-2xl mb-3  font-bold">Send your message</h2>
               <input
                 type="text "
                 placeholder="Enter your name"
@@ -71,15 +72,9 @@ const Contact = () => {
               ></textarea>
               <button className="btn text-white  bg-[#e61710]">SEND NOW</button>
             </div>
-            {/* map */}
-          
-       
-      </div>
-
+          </div>
         </div>
       </Container>
-
-     
     </>
   );
 };

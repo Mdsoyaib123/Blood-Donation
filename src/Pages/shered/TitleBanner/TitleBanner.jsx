@@ -1,12 +1,23 @@
-
-const TitleBanner = ({heading,Home,data}) => {
-    return (
-        <div className="">
-            <div>
-                <img className="h-[200px] w-full object-cover object-center" src="https://i.ibb.co/p3T1Ds0/international-doctor-team-hospital-medical-staff-mixed-race-asian-caucasian-nurse-meeting-clinic-per.jpg" alt="" />
-            </div>
+const TitleBanner = ({ heading, Home, data }) => {
+  return (
+    <>
+      <div className="image-container  ">
+        <div className="relative ">
+          <img
+            className="h-[300px] opacity-80 w-full object-cover object-center "
+            src="https://i.ibb.co/R9nLBrp/colleagues-working-together-call-center-office.jpg"
+            alt=""
+          />
+          <div className="absolute top-0 flex flex-col items-center justify-center text-inherit h-full w-full bg-gradient-to-r from-[#0f0a09] to-[rgba(21, 21, 21, 0)  space-y-2">
+            <h1 className="text-5xl top-1/2 font-bold text-white">
+              Contact with us
+            </h1>
+            <p className="text-2xl text-white font-semibold">Home / Contact Us </p>
+          </div>
         </div>
-    );
+      </div>
+    </>
+  );
 };
 
 export default TitleBanner;

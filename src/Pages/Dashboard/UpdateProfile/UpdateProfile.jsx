@@ -24,7 +24,7 @@ const UpdateProfile = () => {
 
   const { id } = useParams();
   useEffect(() => {
-    axios.get(`https://blood-donation-server-one.vercel.app/UpdateProfile/${id}`)
+    axios.get(`http://localhost:5000/UpdateProfile/${id}`)
     .then((res) => {
       setUpdatebleData(res.data)
 
