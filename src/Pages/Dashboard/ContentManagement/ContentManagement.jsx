@@ -55,7 +55,7 @@ const ContentManagement = () => {
         </Link>
       </div>
       <div className="mt-20">
-        <div className="grid grid-cols-1 gap-5 mx-10">
+        <div className="lg:grid grid-cols-1 gap-5 mx-10">
           {Blogs.map((blog) => (
             <div
               key={blog._id}

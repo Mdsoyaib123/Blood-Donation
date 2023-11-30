@@ -80,8 +80,8 @@ const AllUsers = () => {
 
   const handleChange = (e) => {
     setSelectedValue(e.target.value);
-    // const filtered = users.filter(item=>item.status.includes(e.target.value))
-    // setUsers(filtered)
+    const filtered = users.filter(item=>item.status.includes(e.target.value))
+    
   };
 
   const handelItemPerPage = (e) => {
@@ -109,7 +109,7 @@ const AllUsers = () => {
       <h1 className="text-center text-3xl font-bold mb-12 ">All Users </h1>
       <div>
         <div>
-          <div className="flex justify-end mb-5 mx-10">
+          <div className="lg:flex justify-end mb-5 mx-10">
             <h1 className="text-xl font-bold">Filter By Status :</h1>
             <select onChange={handleChange} className="px-6">
               <option defaultValue="select option" disabled selected>

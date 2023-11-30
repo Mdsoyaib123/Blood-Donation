@@ -75,11 +75,11 @@ const Register = () => {
   };
 
   return (
-    <div className="w-full flex justify-center  bg-red-100 px-10 py-10  bg-gradient-to-r from-red-500 to-amber-600">
+    <div className="w-full flex justify-center  bg-black  px-10 py-10  ">
       <div className="w-10/12">
         <form
           onSubmit={handleSubmit(onSubmit)}
-          className="card-body bg-white px-10   "
+          className="card-body  px-10  bg-base-300 "
         >
           <h1 className="text-4xl font-bold mb-7 text-center">
             Register As a Donor
@@ -268,14 +268,14 @@ const Register = () => {
           <div className="form-control mt-6">
             <p className="text-red-500 py-2"></p>
             <input
-              className="btn bg-red-500 text-white rounded-lg"
+              className="btn bg-[#e61710] text-white rounded-lg"
               type="submit"
               value="Register"
             />
           </div>
           <p className="text-md text-center mt-2 font-bold text-black">
             Already have an account you can{" "}
-            <Link to={"/login"} className="text-red-600 text-xl underline">
+            <Link to={"/login"} className="text-[#e61710] text-xl underline">
               &nbsp;Login here
             </Link>
           </p>

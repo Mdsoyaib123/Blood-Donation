@@ -19,13 +19,13 @@ const VolunteerProfile = () => {
   // console.log(profile);
     return (
         <div className="bg-base-200 mx-10 px-10 py-20 mt-20">
-      <div className="flex justify-between ">
+      <div className="lg:flex justify-between ">
         <h1 className="text-3xl font-bold mb-10">My Profile</h1>
         <Link to={`/dashBoard/adminUpdateProfile/${profile._id}`} className="text-[#e61710] text-xl underline">
           Edit
         </Link>
       </div>
-      <div className="flex gap-12  ">
+      <div className="lg:flex gap-12  ">
         <div className="">
           <img
             className="rounded-full w-[150px]"
@@ -38,7 +38,7 @@ const VolunteerProfile = () => {
           </button>
           </Link>
         </div>
-        <div className="  flex gap-10">
+        <div className="  lg:flex gap-10">
           <div className="space-y-4">
             <h3>
               Full Name : <br></br>{" "}

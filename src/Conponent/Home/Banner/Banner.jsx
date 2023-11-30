@@ -6,7 +6,7 @@ const Banner = () => {
       <div>
         <img src="https://i.ibb.co/C25Qxsk/home-1-slider-1.jpg" alt="" />
       </div>
-      <div className="flex justify-center">
+      <div className="hidden lg:flex justify-center">
         <div className="text-center text-white font-bold absolute top-60">
           <h1 className="text-5xl mb-8">
             DONATE BLOOD AND GET REAL BLESSINGS.

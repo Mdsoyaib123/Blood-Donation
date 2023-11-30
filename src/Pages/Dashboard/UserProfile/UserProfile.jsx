@@ -24,7 +24,7 @@ const UserProfile = () => {
             Edit
           </Link>
         </div>
-        <div className="flex gap-12  ">
+        <div className="lg:flex gap-12  ">
           <div className="">
             <img
               className="rounded-full w-[150px]"
@@ -37,7 +37,7 @@ const UserProfile = () => {
             </button>
            </Link>
           </div>
-          <div className="  flex gap-10">
+          <div className="  lg:flex gap-10">
             <div className="space-y-4">
               <h3>
                 Full Name : <br></br>{" "}
