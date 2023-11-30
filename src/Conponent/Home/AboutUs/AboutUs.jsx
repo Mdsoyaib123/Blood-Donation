@@ -1,12 +1,16 @@
 import Container from "../../Container/Container";
-import '../../Home/AboutUs/AboutUs.css'
+import "../../Home/AboutUs/AboutUs.css";
 
 const AboutUs = () => {
   return (
     <Container>
       <div className="relative lg:flex gap-5 items-center my-20 mt-10">
-        <div className="lg:w-1/2   ">
-          <h1 className="text-4xl font-bold"><span className="underline underline-offset-8 ">Who</span> We Are?</h1>
+        <div className="lg:w-1/2   " data-aos="fade-left"
+    data-aos-easing="ease-out-cubic"
+    data-aos-duration="1000">
+          <h1 className="text-4xl font-bold">
+            <span className="underline underline-offset-8 ">Who</span> We Are?
+          </h1>
           <p className="py-6">
             Blood Buddies is for public donation center with blood donation
             members in the changing health care system.
@@ -20,7 +24,13 @@ const AboutUs = () => {
           </ol>
         </div>
         <div className="lg:w-1/2">
-            <img src="https://i.ibb.co/jhD5671/portrait-young-military-man-giving-blood-donor-center-with-nurse-helping-copy-space-236854-39690.jpg" alt="" />
+          <img
+            data-aos="fade-up"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1500"
+            src="https://i.ibb.co/jhD5671/portrait-young-military-man-giving-blood-donor-center-with-nurse-helping-copy-space-236854-39690.jpg"
+            alt=""
+          />
         </div>
       </div>
     </Container>

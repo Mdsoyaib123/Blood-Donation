@@ -10,7 +10,7 @@ const AdminDashboard = () => {
     const {user} = useContext(AuthContext)
     const [statistics,setStatistics] =useState({})
     useEffect(()=>{
-      fetch('http://localhost:5000/dashboard/statist')
+      fetch('https://blood-donation-server-one.vercel.app/dashboard/statist')
       .then(res=>res.json())
       .then(data=>{
         setStatistics(data)

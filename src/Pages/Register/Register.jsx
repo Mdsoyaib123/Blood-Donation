@@ -3,7 +3,7 @@ import React, { useContext, useRef, useState } from "react";
 import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Await, Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "./../../Provider/AuthProvider/AuthProvider";
 import toast from "react-hot-toast";
 import useAxiosPublic from "./../../Hooks/useAxiosPublic";
@@ -11,7 +11,7 @@ import useAxiosPublic from "./../../Hooks/useAxiosPublic";
 const Register = () => {
   const [district, setDistrict] = useState([]);
   const [upazilas, setUpazilas] = useState([]);
-  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const { createUser, updateUserProfile, logOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
 
@@ -52,18 +52,19 @@ const Register = () => {
             name: data.name,
             email: data.email,
             bloodGroup: data.blood,
-            District:data.district,
-            upazila:data.upazila,
+            District: data.district,
+            upazila: data.upazila,
             Avatar: data.photoUrl,
-            role: 'Donor',
-            status: 'Active'
+            role: "Donor",
+            status: "Active",
           };
           // console.log(userInfo);
           axiosPublic.post("/users", userInfo).then((res) => {
             console.log(res.data);
+
             if (res.data.insertedId) {
               reset();
-              toast.success('successfully created account')
+              toast.success("successfully created account");
               navigate("/");
             }
           });
@@ -78,6 +79,9 @@ const Register = () => {
     <div className="w-full flex justify-center  bg-black  px-10 py-10  ">
       <div className="w-10/12">
         <form
+        data-aos="fade-left"
+        data-aos-easing="ease-out-cubic"
+        data-aos-duration="1000"
           onSubmit={handleSubmit(onSubmit)}
           className="card-body  px-10  bg-base-300 "
         >

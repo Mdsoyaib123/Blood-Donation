@@ -4,14 +4,24 @@ const DonationProcess = () => {
   return (
     <Container>
       <div className="my-10">
-       <div className="my-10">
-       <h1 className="text-3xl  font-bold text-center  ">DONATION PROCESS</h1>
-        <div className="flex justify-center">
-          <div className="divider w-1/3 text-black"></div>
+        <div className="my-10">
+          <h1 className="text-3xl  font-bold text-center  ">
+            DONATION PROCESS
+          </h1>
+          <div className="flex justify-center">
+            <div className="divider w-1/3 text-black"></div>
+          </div>
+          <p className="text-center text-xl font-bold">
+            The donation process from the time you arrive center until the time
+            you leave
+          </p>
         </div>
-        <p className="text-center text-xl font-bold">The donation process from the time you arrive center until the time you leave</p>
-       </div>
-        <div className="lg:flex gap-7 ">
+        <div
+          data-aos="fade-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+          className="lg:flex gap-7 "
+        >
           <div className="flex-1 space-y-5 rounded-md bg-base-200 ">
             <img
               className=""

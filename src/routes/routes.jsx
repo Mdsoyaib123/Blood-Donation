@@ -43,7 +43,7 @@ const routes = createBrowserRouter([
         path: "blog",
         element: <Blog></Blog>,
         loader: () =>
-          fetch("http://localhost:5000/allBlogs"),
+          fetch("https://blood-donation-server-one.vercel.app/allBlogs"),
       },
       {
         path: "fundDonate",
@@ -57,7 +57,7 @@ const routes = createBrowserRouter([
         path: "donationRequests",
         element: <DonationRequests></DonationRequests>,
         loader: () =>
-          fetch("http://localhost:5000/donation"),
+          fetch("https://blood-donation-server-one.vercel.app/donation"),
       },
       {
         path: "donationRequestsDetails/:id",
@@ -68,7 +68,7 @@ const routes = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/donation/${params.id}`
+            `https://blood-donation-server-one.vercel.app/donation/${params.id}`
           ),
       },
       {
@@ -112,7 +112,7 @@ const routes = createBrowserRouter([
         element: <UpdateDonation></UpdateDonation>,
         loader: ({ params }) =>
           fetch(
-            `http://localhost:5000/donation/${params.id}`
+            `https://blood-donation-server-one.vercel.app/donation/${params.id}`
           ),
       },
       {
@@ -150,7 +150,7 @@ const routes = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "http://localhost:5000/dashboard/statist"
+            "https://blood-donation-server-one.vercel.app/dashboard/statist"
           ),
       },
       {
@@ -162,7 +162,7 @@ const routes = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "http://localhost:5000/dashboard/statist"
+            "https://blood-donation-server-one.vercel.app/dashboard/statist"
           ),
       },
       {
@@ -204,7 +204,7 @@ const routes = createBrowserRouter([
         ),
         loader: () =>
           fetch(
-            "http://localhost:5000/dashboard/statist"
+            "https://blood-donation-server-one.vercel.app/dashboard/statist"
           ),
       },
       {

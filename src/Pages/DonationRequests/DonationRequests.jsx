@@ -11,7 +11,7 @@ const DonationRequests = () => {
     // console.log(pendingStatus);
   return (
     <Container>
-      <div className="overflow-x-auto">
+      <div  className="overflow-x-auto">
         <table className="table table-zebra mt-10 text-gray-800">
           {/* head */}
           <thead>

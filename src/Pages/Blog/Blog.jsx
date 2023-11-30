@@ -11,7 +11,7 @@ const Blog = () => {
       };
     return (
        <Container>
-         <div>
+         <div className="my-10">
             <div className="grid gap-10 sm:grid-cols-1  md:grid-cols-2 lg:grid-cols-3">
                 {
                     publishedBlog.map(blog=><div key={blog._id} className="card card-compact w-96 bg-base-100 shadow-xl overflow-hidden">

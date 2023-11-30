@@ -2,11 +2,11 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="h-screen relative mb-28">
+    <div  className="h-screen relative mb-28">
       <div>
         <img src="https://i.ibb.co/C25Qxsk/home-1-slider-1.jpg" alt="" />
       </div>
-      <div className="hidden lg:flex justify-center">
+      <div  className="hidden lg:flex justify-center" >
         <div className="text-center text-white font-bold absolute top-60">
           <h1 className="text-5xl mb-8">
             DONATE BLOOD AND GET REAL BLESSINGS.
