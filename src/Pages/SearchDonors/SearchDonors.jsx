@@ -19,7 +19,7 @@ const SearchDonors = () => {
     const searchData = { blood, district, upazila };
 
     const res = await axios.get(
-      `http://localhost:5000/searchData?district=${district}&&upazila=${upazila}&&blood=${blood}`
+      `https://blood-donation-server-one.vercel.app/searchData?district=${district}&&upazila=${upazila}&&blood=${blood}`
     );
     console.log(res.data);
     setSearchData(res.data);

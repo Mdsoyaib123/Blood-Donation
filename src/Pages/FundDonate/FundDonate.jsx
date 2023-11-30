@@ -12,16 +12,16 @@ const FundDonate = () => {
   const { data: loader = [], refetch } = useQuery({
     queryKey: ["fund"],
     queryFn: async () => {
-      const res = await axiosPublic.get("http://localhost:5000/payments");
+      const res = await axiosPublic.get("https://blood-donation-server-one.vercel.app/payments");
       return res.data;
     },
   });
 
   return (
     <Container>
-      <div className="mt-10">
+      <div className="mt-10 w-2/3 mx-auto  py-3 px-6">
         {/* <h1 className="text-3xl font-bold text-center my-5">Donate Fund</h1> */}
-        <Elements stripe={stripePromise}>
+        <Elements stripe={stripePromise}>   
           <PaymentForm refetch={refetch}></PaymentForm>
         </Elements>
       </div>

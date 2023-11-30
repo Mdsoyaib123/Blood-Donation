@@ -2,7 +2,12 @@ const TitleBanner = ({ heading, Home, data }) => {
   return (
     <>
       <div className="image-container  ">
-        <div className="relative ">
+        <div
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="1000"
+          className="relative "
+        >
           <img
             className="h-[300px] opacity-80 w-full object-cover object-center "
             src="https://i.ibb.co/R9nLBrp/colleagues-working-together-call-center-office.jpg"
@@ -12,7 +17,9 @@ const TitleBanner = ({ heading, Home, data }) => {
             <h1 className="text-5xl top-1/2 font-bold text-white">
               Contact with us
             </h1>
-            <p className="text-2xl text-white font-semibold">Home / Contact Us </p>
+            <p className="text-2xl text-white font-semibold">
+              Home / Contact Us{" "}
+            </p>
           </div>
         </div>
       </div>
